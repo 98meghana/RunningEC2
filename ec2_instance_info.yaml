@@ -5,7 +5,7 @@
   tasks:
     - name: Describe EC2 Instances
     
-        region: us-east-1  # Set your desired AWS region
+        region: us-east-1# Set your desired AWS region
         filters:
           instance-state-name: running
       register: ec2_instances
