@@ -3,7 +3,7 @@
   hosts: localhost
   gather_facts: False
   tasks:
-    - name: Describe EC2 Instances
+    - name: ec2_instance_info
       community.aws.ec2_instance_info:
         region: us-east-1  # Set your desired AWS region
         filters:
