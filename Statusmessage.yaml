@@ -16,11 +16,11 @@
 
     - name: Send Email
       mail:
-        host: your_smtp_server.com
-        port: 587  # Specify the SMTP server port
-        username: your_email@example.com
-        password: your_email_password
-        to: recipient@example.com
+        host: 54.174.32.224
+        port: 25  # Specify the SMTP server port
+        username: 98meghanach@gmail.com
+        password: Meghana786*
+        to: meghana_ch@yahoo.com
         subject: Daily EC2 Status
         body: "Daily EC2 Status: {{ status_message }}"
         tls: yes
