@@ -1,0 +1,26 @@
+---
+- name: Get EC2 Instance Status and Send Email
+  hosts: localhost
+  gather_facts: False
+  tasks:
+    - name: Describe EC2 Instances
+      aws_ec2_info:
+        region: us-east-1  # Set your desired AWS region
+        filters:
+          instance-state-name: running
+      register: ec2_instances
+
+    - name: Generate Status Message
+      set_fact:
+        status_message: "{{ ec2_instances.instances | map(attribute='state.name') | list | join(', ') }}"
+
+    - name: Send Email
+      mail:
+        host: your_smtp_server.com
+        port: 587  # Specify the SMTP server port
+        username: your_email@example.com
+        password: your_email_password
+        to: recipient@example.com
+        subject: Daily EC2 Status
+        body: "Daily EC2 Status: {{ status_message }}"
+        tls: yes
